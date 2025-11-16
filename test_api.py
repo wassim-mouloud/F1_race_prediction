@@ -2,6 +2,7 @@
 Script de test simple pour vérifier la connexion à l'API FastF1
 """
 
+from requests import session
 from src.data_collector import F1DataCollector
 
 def test_api_connection():
@@ -25,8 +26,10 @@ def test_api_connection():
         session = collector.get_session_data(2025, "3", 'Q')
         print(f"✅ Succès! Session chargée: {session.event['EventName']}")
         print(f"   Date: {session.event['EventDate']}")
-        print(f"   Nombre de tours enregistrés: {len(session.laps)}")
-        print("session object:", session.event)
+        print("\n=== Available attributes ===")
+        print([attr for attr in dir(session) if not attr.startswith('_')])
+        print("============================")
+        print("results:\n", session.results[['BroadcastName', 'Position', ]])
     except Exception as e:
         print(f"❌ Erreur: {e}")
         return
