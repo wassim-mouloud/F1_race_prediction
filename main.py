@@ -98,7 +98,7 @@ def main():
     train_parser = subparsers.add_parser('train', help='Train prediction model')
     train_parser.add_argument('--data', type=str, required=True, help='Path to training data')
     train_parser.add_argument('--model-type', type=str, default='random_forest',
-                              choices=['random_forest', 'gradient_boosting', 'xgboost', 'lightgbm'],
+                              choices=['random_forest', 'gradient_boosting', 'xgboost'],
                               help='Model type')
     train_parser.add_argument('--output', type=str, default='models/trained/model.pkl',
                               help='Output model path')

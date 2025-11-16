@@ -8,7 +8,6 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import xgboost as xgb
-import lightgbm as lgb
 import joblib
 from typing import Dict, Any, Optional, Tuple
 
@@ -50,14 +49,6 @@ class F1PredictionModel:
             )
         elif self.model_type == 'xgboost':
             return xgb.XGBRegressor(
-                n_estimators=100,
-                learning_rate=0.1,
-                max_depth=5,
-                random_state=42,
-                n_jobs=-1
-            )
-        elif self.model_type == 'lightgbm':
-            return lgb.LGBMRegressor(
                 n_estimators=100,
                 learning_rate=0.1,
                 max_depth=5,

@@ -4,7 +4,7 @@ Data Collection Module using FastF1 API
 
 import fastf1
 import pandas as pd
-from typing import Optional, List
+from typing import Optional
 from pathlib import Path
 
 

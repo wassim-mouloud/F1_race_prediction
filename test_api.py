@@ -10,23 +10,23 @@ def test_api_connection():
     print("🔄 Initialisation du collector...")
     collector = F1DataCollector()
 
-    print("\n📅 Test 1: Récupération du calendrier 2024...")
-    try:
-        schedule = collector.get_season_schedule(2018)
-        print(f"✅ Succès! Nombre de courses: {len(schedule)}")
-        print("\nPremières courses de la saison:")
-        print(schedule[['RoundNumber', 'EventName', 'EventDate']].head())
-    except Exception as e:
-        print(f"❌ Erreur: {e}")
-        return
+    # print("\n📅 Test 1: Récupération du calendrier 2025...")
+    # try:
+    #     schedule = collector.get_season_schedule(2025)
+    #     print(f"✅ Succès! Nombre de courses: {len(schedule)}")
+    #     print("\nPremières courses de la saison:")
+    #     print(schedule[['RoundNumber', 'EventName', 'EventDate']].head())
+    # except Exception as e:
+    #     print(f"❌ Erreur: {e}")
+    #     return
 
     print("\n🏁 Test 2: Récupération des données d'une course...")
     try:
-        # Test avec la première course de 2018 (Australie)
-        session = collector.get_session_data(2018, "1", 'Q')
+        session = collector.get_session_data(2025, "3", 'Q')
         print(f"✅ Succès! Session chargée: {session.event['EventName']}")
         print(f"   Date: {session.event['EventDate']}")
         print(f"   Nombre de tours enregistrés: {len(session.laps)}")
+        print("session object:", session.event)
     except Exception as e:
         print(f"❌ Erreur: {e}")
         return
@@ -40,9 +40,7 @@ def test_api_connection():
     # except Exception as e:
     #     print(f"❌ Erreur: {e}")
     #     return
-    print("\n Hamilton lap time : ", collector.get_driver_lap_times(session, '44'))
 
-    print("\n✨ Tous les tests ont réussi! L'API fonctionne correctement.")
     
 
 
