@@ -182,12 +182,8 @@ class F1DataPreprocessor:
                 'avg_position_last_10',
                 'podium_count',
                 'wins_count',
-                'grid_position',
-                'DriverNumber_encoded'
+                'grid_position'
             ]
-
-            if 'TeamName_encoded' in df.columns:
-                feature_cols.append('TeamName_encoded')
 
         # Filter to only include available columns
         feature_cols = [col for col in feature_cols if col in df.columns]
