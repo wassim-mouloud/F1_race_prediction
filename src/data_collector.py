@@ -18,11 +18,12 @@ class F1DataCollector:
         Initialize the data collector.
 
         Args:
-            cache_dir: Directory to cache FastF1 data
+            cache_dir: Directory to cache FastF1 data (not used - caching disabled)
         """
         self.cache_dir = Path(cache_dir)
-        self.cache_dir.mkdir(exist_ok=True)
-        fastf1.Cache.enable_cache(str(self.cache_dir))
+        # Caching disabled - FastF1 will fetch fresh data every time
+        # self.cache_dir.mkdir(exist_ok=True)
+        # fastf1.Cache.enable_cache(str(self.cache_dir))
 
     def get_season_schedule(self, year: int) -> pd.DataFrame:
         """
@@ -37,7 +38,7 @@ class F1DataCollector:
         schedule = fastf1.get_event_schedule(year)
         return schedule
 
-    def get_session_data(self, year: int, race: str, session_type: str = 'R') -> fastf1.core.Session:
+    def get_session_data(self, year: int, race: str, session_type: str = 'R') -> fastf1.core.Session: # type: ignore
         """
         Get data for a specific session.
 
@@ -53,7 +54,7 @@ class F1DataCollector:
         session.load()
         return session
 
-    def get_driver_lap_times(self, session: fastf1.core.Session, driver: str) -> pd.DataFrame:
+    def get_driver_lap_times(self, session: fastf1.core.Session, driver: str) -> pd.DataFrame: # type: ignore
         """
         Get lap times for a specific driver in a session.
 
@@ -67,7 +68,7 @@ class F1DataCollector:
         laps = session.laps.pick_driver(driver).pick_fastest()
         return laps
 
-    def get_race_results(self, session: fastf1.core.Session) -> pd.DataFrame:
+    def get_race_results(self, session: fastf1.core.Session) -> pd.DataFrame: # type: ignore
         """
         Get race results.
 
